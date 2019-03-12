@@ -1,6 +1,6 @@
 ﻿using CustomFilterRazorPages.Filters;
 
-namespace CustomFilterRazorPages.Pages.MyDir
+namespace CustomFilterRazorPages.Pages.OtherPages1
 {
 	public class TestModel : BasePageModel
 	{

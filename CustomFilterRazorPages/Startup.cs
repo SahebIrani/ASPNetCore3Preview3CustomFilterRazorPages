@@ -34,8 +34,36 @@ namespace CustomFilterRazorPages
 			})
 			.AddRazorPagesOptions(options =>
 			{
-				options.Conventions.AddFolderApplicationModelConvention("/MyDir",
+				options.Conventions.AddFolderApplicationModelConvention("/OtherPages1",
 					model => model.Filters.Add(new SamplePageFilter(logger)));
+
+				options.Conventions.Add(new GlobalHeaderPageApplicationModelConvention());
+
+				options.Conventions.Add(new GlobalPageHandlerModelConvention());
+
+				options.Conventions.AddFolderApplicationModelConvention("/OtherPages2", model =>
+				{
+					model.Filters.Add(new AddHeaderAttribute(
+						"OtherPagesHeader", new string[] { "OtherPages Header Value" }));
+				});
+
+				options.Conventions.AddPageApplicationModelConvention("/About", model =>
+				{
+					model.Filters.Add(new AddHeaderAttribute(
+						"AboutHeader", new string[] { "About Header Value" }));
+				});
+
+				options.Conventions.ConfigureFilter(model =>
+				{
+					if (model.RelativePath.Contains("OtherPages/Test"))
+					{
+						return new AddHeaderAttribute("OtherPagesTestHeader",
+							new string[] { "OtherPages/Test Header Value" });
+					}
+					return new EmptyFilter();
+				});
+
+				options.Conventions.ConfigureFilter(new AddHeaderWithFactory());
 			})
 			.AddNewtonsoftJson();
 		}

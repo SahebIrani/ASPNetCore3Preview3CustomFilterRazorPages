@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomFilterRazorPages.Pages
 {
-	[CustomFilter, AddHeader("Author", "SinjulMSBH")]
+	[CustomFilter, AddHeader("Author", new string[] { "SinjulMSBH" })]
 	public class TestModel : PageModel
 	{
 		private readonly ILogger _logger;
