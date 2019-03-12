@@ -2,3 +2,5 @@
 SinjulMSBH / Full Sample Filter methods for Razor Pages in ASP.NET Core 3.0 Preview 3 ..
 
 ![SinjulMSBH](https://8pic.ir/uploads/filter.png)
+
+![JackSLater](https://8pic.ir/uploads/filter2.png)
